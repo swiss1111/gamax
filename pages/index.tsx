@@ -161,7 +161,7 @@ const Search: React.FC<Props> = () => {
                 console.log(error)
             });
 
-        // setSearchResults(searchMockResponse.items)
+        // setSearchResults(searchMockResponse.items as SearchResult[])
     }
 
     return (

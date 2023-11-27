@@ -40,3 +40,7 @@ async function fetchData(url = "", data: any = undefined, method: MethodType = "
 export function search(searchText: string, pageSize= 5): Promise<any> {
     return fetchData(`/search?pagesize=${pageSize}&order=desc&sort=activity&intitle=${searchText}&site=stackoverflow`);
 }
+
+export function user(id): Promise<any> {
+    return fetchData(`/users/${id}?order=desc&sort=reputation&site=stackoverflow`);
+}

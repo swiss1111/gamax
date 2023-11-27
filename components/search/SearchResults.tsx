@@ -1,5 +1,6 @@
 import React from 'react';
 import {SearchResult} from "../../types/SearchTypes";
+import Link from "next/link";
 
 type Props = {
     searchResults: SearchResult[]
@@ -22,7 +23,7 @@ const SearchResults: React.FC<Props> = (props) => {
                     </div>
                     <div className="footer">
                         <div className="owner">
-                            <a href={result.owner.link}>{result.owner.display_name}</a>
+                            <Link href={`/user/${result.owner.user_id}`}>{result.owner.display_name}</Link>
                         </div>
                     </div>
                 </div>

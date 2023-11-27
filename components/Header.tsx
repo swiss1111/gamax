@@ -1,11 +1,17 @@
 import React from 'react';
 
-const Header: React.FC = () => {
+type Props = {
+    title: string;
+};
 
+const Header: React.FC<Props> = (props) => {
     return (
-        <nav>
+        <div>
+            <h1>{props.title}</h1>
+            <nav>
 
-        </nav>
+            </nav>
+        </div>
     );
 };
 

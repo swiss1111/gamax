@@ -1,9 +1,10 @@
 import React, {useState} from "react"
-import Layout from "../components/Layout"
+import Layout from "../components/layout/Layout"
 import SearchBar from "../components/search/SearchBar";
 import SearchResults from "../components/search/SearchResults";
 import {SearchResponse, SearchResult} from "../types/SearchTypes";
 import {search} from "../api/searchApi";
+import LoadingSpinner from "../components/loadingSpinner/LoadingSpinner";
 
 // const searchMockResponse:SearchResponse = {
 //     "items": [
@@ -150,15 +151,19 @@ type Props = {}
 
 const Search: React.FC<Props> = () => {
     const [searchResults, setSearchResults] = useState([] as SearchResult[]);
+    const [loading, setLoading] = useState(false);
 
     function handleSearch(searchData) {
+        setLoading(true);
         search(searchData.search)
             .then(resp => {
-                console.log('index.tsx', searchData, resp);
                 setSearchResults(resp.items)
             })
             .catch(error => {
                 console.log(error)
+            })
+            .finally(() => {
+                setLoading(false);
             });
 
         // setSearchResults(searchMockResponse.items as SearchResult[])
@@ -167,7 +172,7 @@ const Search: React.FC<Props> = () => {
     return (
         <Layout title="Search">
             <SearchBar onSearch={handleSearch}/>
-            <SearchResults searchResults={searchResults}/>
+            {loading ? (<LoadingSpinner />) : (<SearchResults searchResults={searchResults}/>)}
         </Layout>
     )
 }

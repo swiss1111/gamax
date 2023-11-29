@@ -5,6 +5,9 @@
     --color4: #0f969c;
     --color5: #6da5c0;
     --color6: #294d61;
+
+    --default-padding: 10px;
+    --page-width: 1024px;
 }
 
 html,

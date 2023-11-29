@@ -1,0 +1,5 @@
+.container {
+    padding:var(--default-padding);
+    max-width: var(--page-width);
+    margin: 0 auto;
+}

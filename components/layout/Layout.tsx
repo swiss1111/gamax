@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
-import Header from "./Header";
+import Header from "../header/Header";
+import styles from './Layout.module.css';
 
 type Props = {
   children: ReactNode;
@@ -9,7 +10,7 @@ type Props = {
 const Layout: React.FC<Props> = (props) => (
   <div>
     <Header title={props.title}/>
-    <div className="layout">{props.children}</div>
+    <div className={styles.container}>{props.children}</div>
   </div>
 );
 

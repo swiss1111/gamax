@@ -1,9 +1,10 @@
-import React, {ReactNode, useEffect, useState} from 'react';
-import Layout from '../../components/Layout';
+import React, {useEffect, useState} from 'react';
+import Layout from '../../components/layout/Layout';
 import {useRouter} from "next/router";
 import {SearchResponse, UserResult} from "../../types/SearchTypes";
 import {user} from "../../api/searchApi";
 import {timestampToDateString} from "../../utils/dateUtils";
+import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
 
 // const userMockResponse: SearchResponse = {
 //     "items": [
@@ -38,32 +39,34 @@ import {timestampToDateString} from "../../utils/dateUtils";
 //     "quota_remaining": 9958
 // }
 
-type Props = {
-    children: ReactNode;
-    title: string;
-};
+type Props = {};
 
-const User: React.FC<Props> = (props) => {
+const User: React.FC<Props> = () => {
     const router = useRouter();
     const params = router?.query;
     const id = parseInt(params?.id as string);
 
     const [userResponse, setUserResponse] = useState(undefined as UserResult);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+        setLoading(true)
         user(id)
             .then(resp => {
                 console.log('[id].tsx', resp);
                 setUserResponse(resp.items[0] as UserResult);
             })
-            .catch(error => console.log(error));
+            .catch(error => console.log(error))
+            .finally(() => {
+                setLoading(false);
+            });
 
         // setUserResponse(userMockResponse.items[0] as UserResult);
     }, [])
 
     return (
         <Layout title="User">
-            {userResponse && (
+            {userResponse && !loading && (
                 <div>
                     <div className="header">
                         <h2><a href={userResponse.link} target="_blank">{userResponse.display_name}</a></h2>
@@ -82,6 +85,7 @@ const User: React.FC<Props> = (props) => {
                     </div>
                 </div>
             )}
+            {loading && (<LoadingSpinner />)}
         </Layout>
     );
 };

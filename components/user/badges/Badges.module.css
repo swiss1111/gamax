@@ -1,0 +1,23 @@
+.container {
+    width: 100%;
+    margin-top: var(--default-padding);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.badgeContainer {
+    background-color: var(--color3);
+    flex: 1;
+    margin-right: var(--default-padding);
+    padding: var(--default-padding);
+    text-align: center;
+}
+
+.badgeContainer:last-child {
+    margin-right: 0;
+}
+
+.badgeTitle {
+    text-transform: uppercase;
+}

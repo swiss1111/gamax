@@ -1,0 +1,14 @@
+.container {
+    width: 100%;
+    margin-top: var(--default-padding);
+    display: flex;
+    align-items: center;
+}
+
+.userDetails {
+    padding-left: var(--default-padding);
+}
+
+.userName {
+    margin-bottom: var(--default-padding);
+}

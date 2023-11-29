@@ -44,3 +44,15 @@ export function search(searchText: string, pageSize= 5): Promise<any> {
 export function user(id): Promise<any> {
     return fetchData(`/users/${id}?order=desc&sort=reputation&site=stackoverflow`);
 }
+
+export function answers(id): Promise<any> {
+    return fetchData(`/users/${id}/answers?order=desc&pageSize=5&sort=votes&site=stackoverflow`);
+}
+
+export function questions(id): Promise<any> {
+    return fetchData(`/questions/${id}?order=desc&sort=activity&site=stackoverflow`);
+}
+
+export function questionByUser(id): Promise<any> {
+    return fetchData(`/users/${id}/questions?pagesize=5&order=desc&sort=votes&site=stackoverflow`);
+}

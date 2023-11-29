@@ -49,8 +49,19 @@ export interface UserResult {
     "display_name": string
 }
 
+export interface AnswerResult {
+    "owner": Owner,
+    "is_accepted": boolean,
+    "score": number,
+    "last_activity_date": number,
+    "creation_date": number,
+    "answer_id": number,
+    "question_id": number,
+    "content_license": string
+}
+
 export interface SearchResponse {
-    items: SearchResult[] | UserResult[],
+    items: SearchResult[] | UserResult[] | AnswerResult[],
     has_more: boolean,
     backoff?: number,
     quota_max: number,

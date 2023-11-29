@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 import Layout from "../components/layout/Layout"
-import SearchBar from "../components/search/SearchBar";
-import SearchResults from "../components/search/SearchResults";
+import SearchBar from "../components/search/searchBar/SearchBar";
+import SearchResults from "../components/search/searchResults/SearchResults";
 import {SearchResponse, SearchResult} from "../types/SearchTypes";
 import {search} from "../api/searchApi";
 import LoadingSpinner from "../components/loadingSpinner/LoadingSpinner";

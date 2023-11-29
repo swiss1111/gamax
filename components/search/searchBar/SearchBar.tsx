@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import styles from './SearchBar.module.css'
 
 type Props = {
     onSearch: (searchData) => void;
@@ -19,8 +20,8 @@ const SearchBar: React.FC<Props> = (props) => {
     }
 
     return (
-        <div>
-            <input type="text" value={searchText} onChange={handleChangeSearchText} />
+        <div className={styles.container}>
+            <input className={styles.searchText} type="text" value={searchText} onChange={handleChangeSearchText} />
             <button onClick={handleClickSearchButton}>Search</button>
         </div>
     );

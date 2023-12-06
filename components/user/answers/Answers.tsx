@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import styles from './Answers.module.css'
-import {AnswerResult, SearchResult, UserResult} from "../../../types/SearchTypes";
+import {AnswerResult, QuestionResult, UserResult} from "../../../types/SearchTypes";
 import {answers, questions} from "../../../api/searchApi";
 import LoadingSpinner from "../../loadingSpinner/LoadingSpinner";
 import SearchResults from "../../search/searchResults/SearchResults";
@@ -13,7 +13,7 @@ const Answers: React.FC<Props> = (props) => {
     const userResponse = props.userResponse;
 
     const [answersResults, setAnswersResults] = useState([] as AnswerResult[]);
-    const [questionResults, setQuestionResults] = useState([] as SearchResult[]);
+    const [questionResults, setQuestionResults] = useState([] as QuestionResult[]);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
@@ -33,7 +33,7 @@ const Answers: React.FC<Props> = (props) => {
             setLoading(true);
             questions(answersResults.map(item => item.question_id).join(';'))
                 .then(resp => {
-                    setQuestionResults(resp.items as SearchResult[]);
+                    setQuestionResults(resp.items as QuestionResult[]);
                 })
                 .catch(error => console.log(error))
                 .finally(() => {

@@ -23,7 +23,6 @@ const User: React.FC<Props> = () => {
         setLoading(true)
         user(id)
             .then(resp => {
-                console.log('[id].tsx', resp);
                 setUserResponse(resp.items[0] as UserResult);
             })
             .catch(error => console.log(error))

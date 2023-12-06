@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import styles from './SearchBar.module.css'
+import {SearchData} from "../../../types/SearchTypes";
 
 type Props = {
-    onSearch: (searchData) => void;
+    onSearch: (searchData: SearchData) => void;
 };
 
 const SearchBar: React.FC<Props> = (props) => {

@@ -1,11 +1,11 @@
 import React from 'react';
-import {SearchResult} from "../../../types/SearchTypes";
+import {QuestionResult} from "../../../types/SearchTypes";
 import Link from "next/link";
 import styles from './SearchResults.module.css'
 import {timestampToDateString} from "../../../utils/dateUtils";
 
 type Props = {
-    searchResults: SearchResult[]
+    searchResults: QuestionResult[]
 };
 
 const SearchResults: React.FC<Props> = (props) => {

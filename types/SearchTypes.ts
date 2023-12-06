@@ -1,3 +1,7 @@
+export interface SearchData {
+    text: string
+}
+
 export interface Owner {
     account_id: number,
     reputation: number,
@@ -8,7 +12,7 @@ export interface Owner {
     link: string
 }
 
-export interface SearchResult {
+export interface QuestionResult {
     tags: string[],
     owner: Owner,
     is_answered: boolean,
@@ -60,8 +64,8 @@ export interface AnswerResult {
     "content_license": string
 }
 
-export interface SearchResponse {
-    items: SearchResult[] | UserResult[] | AnswerResult[],
+export interface ResponseWrapper {
+    items: QuestionResult[] | UserResult[] | AnswerResult[],
     has_more: boolean,
     backoff?: number,
     quota_max: number,
